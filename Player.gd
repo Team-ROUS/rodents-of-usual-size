@@ -10,15 +10,13 @@ func _ready():
 #func _process(delta):
 #	pass
 
-var velocity = Vector2(500, 500)
 func _physics_process(delta):
-	$KinematicBody2D.move_and_slide(velocity)
-	if $KinematicBody2D.position.x > get_viewport().size.x:
-		velocity.x *= -1
-	if $KinematicBody2D.position.y > get_viewport().size.y:
-		velocity.y *= -1
-	if $KinematicBody2D.position.x < 0:
-		velocity.x *= -1
-	if $KinematicBody2D.position.y < 0:
-		velocity.y *= -1
+	var left = Input.get_action_strength("ui_left")
+	var right = Input.get_action_strength("ui_right")
+	var up = Input.get_action_strength("ui_up")
+	var down = Input.get_action_strength("ui_down")
+
+	var x = -left if left > 0 else right
+	var y = -up if up > 0 else down
+	$Player/KinematicBody2D.move_and_slide(Vector2(x * 100, y * 100))
 
