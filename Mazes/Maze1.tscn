@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://tilemap/tilemap2.tres" type="TileSet" id=1]
 [ext_resource path="res://Art/Tiles - Pipe Bolted L.png" type="Texture" id=2]
+[ext_resource path="res://Art/placeholder rodent.png" type="Texture" id=3]
+[ext_resource path="res://Mazes/KinematicBody2D.gd" type="Script" id=4]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[node name="Node2D2" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = -10
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 48, 48 )
 format = 1
@@ -15,3 +21,21 @@ tile_data = PoolIntArray( 262154, 10, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 
 position = Vector2( 360, 432 )
 rotation = 1.5708
 texture = ExtResource( 2 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 26, 365 )
+scale = Vector2( 0.3, 0.3 )
+z_index = 10
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
+light_mask = 2
+z_index = 12
+texture = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
+current = true
+zoom = Vector2( 0.4, 0.4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+shape = SubResource( 1 )

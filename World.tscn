@@ -149,7 +149,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 3/z_index = 0
 
-[sub_resource type="Shader" id=19]
+[sub_resource type="Shader" id=22]
 code = "shader_type canvas_item;
 
 
@@ -160,7 +160,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=20]
-shader = SubResource( 19 )
+shader = SubResource( 22 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
