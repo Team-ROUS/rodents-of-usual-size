@@ -2,19 +2,25 @@ tool
 extends Node
 
 const SERCOMM = preload("res://addons/GDSerCommDock/bin/GDSerComm.gdns")
-onready var PORT = SERCOMM.new()
+var PORT
 
 onready var com = $Com
 
+func plugin_installed():
+	var directory = Directory.new();
+	return directory.file_exists("res://addons/GDSerCommDock/bin/libGDSercomm.dylib")
+
 func _ready():
-	PORT.open(
-		"/dev/cu.usbserial-120",
-		9600,
-		1000,
-		com.bytesz.SER_BYTESZ_8, 
-		com.parity.SER_PAR_NONE, 
-		com.stopbyte.SER_STOPB_ONE)
-	PORT.flush()
+	if plugin_installed():
+		PORT = SERCOMM.new()
+		PORT.open(
+			"/dev/cu.usbserial-120",
+			9600,
+			1000,
+			com.bytesz.SER_BYTESZ_8, 
+			com.parity.SER_PAR_NONE, 
+			com.stopbyte.SER_STOPB_ONE)
+		PORT.flush()
 
 var maps = [
 	"0,0,DRDDDDRRRRLLDD\n",
@@ -26,8 +32,9 @@ var maps = [
 var map_idx = 0
 
 func laser_set_map():
-	PORT.write(maps[map_idx])
-	PORT.flush()
+	if plugin_installed():
+		PORT.write(maps[map_idx])
+		PORT.flush()
 
 func laser_change_map():
 	map_idx += 1
