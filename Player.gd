@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 const UP = Vector2(0, -1)
 export(int) var GRAVITY = 25
+export(int) var WALLGRAVITY = 10
 export(int) var MAXFALLSPEED = 400
 export(int) var MAXSPEED = 200
 export(int) var WALLJUMPFORCE = 400
@@ -29,7 +30,7 @@ func handle_gravity():
 	if not is_on_wall():
 		motion.y += GRAVITY
 	else:
-		motion.x += (GRAVITY * is_near_wall())
+		motion.x += (WALLGRAVITY * is_near_wall())
 
 func handle_terminal_velocity():
 	if motion.y > MAXFALLSPEED:
@@ -50,9 +51,12 @@ func get_direction():
 
 func get_move_axis():
 	if is_on_floor():
+		print("is on floor")
 		return "x"
 	if is_on_wall():
+		print("is on wall")
 		return "y"
+	print("is on else")
 	return "x"
 
 func _physics_process(delta):
@@ -66,6 +70,7 @@ func _physics_process(delta):
 	if move_axis == "y":
 		motion[move_axis] += (ACCEL * direction * -is_near_wall() * get_motion_multiplier())
 	else:
+		print((ACCEL * direction  * get_motion_multiplier()))
 		motion[move_axis] += (ACCEL * direction  * get_motion_multiplier())
 
 
@@ -87,6 +92,7 @@ func _physics_process(delta):
 	if get_direction() == 0:
 		motion.x = lerp(motion.x, 0, 0.2)
 	motion.x = clamp(motion.x, -MAXSPEED, MAXSPEED)
+	print(motion)
 	motion = move_and_slide(motion, UP)
 	
 #	show the pause menu
