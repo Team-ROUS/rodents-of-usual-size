@@ -1,13 +1,14 @@
 extends KinematicBody2D
 
 const UP = Vector2(0, -1)
-const GRAVITY = 25
-const MAXFALLSPEED = 400
-const MAXSPEED = 200
+export(int) var GRAVITY = 25
+export(int) var MAXFALLSPEED = 400
+export(int) var MAXSPEED = 200
+export(int) var WALLJUMPFORCE = 400
 export(int) var JUMPFORCE = 400
 export(int) var ACCEL = 30
-const AIRMULTIPLIERCONTROLS = 0.7
-const AIRMULTIPLERX = 0.1
+export(int) var AIRMULTIPLIERCONTROLS = 0.7
+
 const FacingX = {LEFT = -1, RIGHT = 1}
 
 var motion = Vector2()
@@ -82,7 +83,7 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("jump"):
 			motion.x = JUMPFORCE * -is_near_wall()
 			motion.y = -JUMPFORCE
-		if Input.is_action_just_pressed("ui_down"):
+		if Input.is_action_just_pressed("down"):
 			motion.x = JUMPFORCE * -is_near_wall()
 	if get_direction() == 0:
 		motion.x = lerp(motion.x, 0, 0.2)
@@ -106,11 +107,7 @@ func is_near_wall():
 
 
 func rotate_mouse():
-	$Sprite.scale.x *= facingX
-
-	if is_near_wall() == -1:
-		$Sprite.rotation_degrees = -90 * facingX
-	if  is_near_wall() == 0:
-		$Sprite.rotation_degrees = 0
-	if  is_near_wall() == 1:
-		$Sprite.rotation_degrees = 90 * facingX
+	$Sprite.scale.x = abs($Sprite.scale.x) * facingX
+	$Sprite.rotation_degrees = 0
+	$Sprite.rotation_degrees = 90 * -is_near_wall()
+ 
