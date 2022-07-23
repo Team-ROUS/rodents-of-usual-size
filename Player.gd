@@ -78,13 +78,14 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("jump"):
 			motion.x = JUMPFORCE * -is_near_wall()
 			motion.y = -JUMPFORCE
-		if Input.is_action_just_pressed("down"):
+		if Input.is_action_just_pressed("ui_down"):
 			motion.x = JUMPFORCE * -is_near_wall()
 	if get_direction() == 0:
 		motion.x = lerp(motion.x, 0, 0.2)
 	motion.x = clamp(motion.x, -MAXSPEED, MAXSPEED)
 	motion = move_and_slide(motion, UP)
 	
+#	show the pause menu
 	if Input.is_action_just_pressed("esc"):
 		get_tree().change_scene("res://Menus/GameMenu.tscn");
 	
