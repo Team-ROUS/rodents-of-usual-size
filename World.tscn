@@ -301,18 +301,16 @@ enabled = true
 rotation = 1.5708
 enabled = true
 
-<<<<<<< Updated upstream
 [node name="Laser" type="Node" parent="player"]
 script = ExtResource( 8 )
 
 [node name="Com" type="Node" parent="player/Laser"]
 script = ExtResource( 4 )
-=======
+
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 932, -1333 )
 scale = Vector2( 1000, 1000 )
 texture = ExtResource( 6 )
->>>>>>> Stashed changes
 
 [connection signal="body_entered" from="Finish" to="Finish" method="_on_Finish_body_entered"]
 [connection signal="body_exited" from="Finish" to="Finish" method="_on_Finish_body_exited"]
