@@ -79,7 +79,7 @@ func _physics_process(delta):
 			motion.x = JUMPFORCE * -is_near_wall()
 			motion.y = -JUMPFORCE
 		if Input.is_action_just_pressed("ui_down"):
-			motion.x = JUMPFORCE * -is_near_wall()
+			motion.x = (GRAVITY + 10) * -is_near_wall()
 	if get_direction() == 0:
 		motion.x = lerp(motion.x, 0, 0.2)
 	motion.x = clamp(motion.x, -MAXSPEED, MAXSPEED)
