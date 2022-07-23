@@ -24,10 +24,6 @@ config/name="Rodents of Usual Size"
 run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
-[editor_plugins]
-
-enabled=PoolStringArray( "res://addons/GDSerCommDock/plugin.cfg" )
-
 [input]
 
 left={

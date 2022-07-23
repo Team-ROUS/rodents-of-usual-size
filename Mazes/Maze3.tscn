@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://tilemap/tilemap2.tres" type="TileSet" id=1]
+[ext_resource path="res://Art/Tiles - Pipe Bolted R.png" type="Texture" id=2]
+[ext_resource path="res://Art/Tiles - Pipe Bolted L.png" type="Texture" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 48, 48 )
+format = 1
+tile_data = PoolIntArray( 6, 10, 0, 7, 9, 0, 65542, 6, 0, 65545, 10, 0, 65546, 0, 0, 65547, 9, 0, 131078, 6, 0, 131081, 6, 0, 131083, 6, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 4, 0, 196617, 6, 0, 196619, 6, 0, 196621, 10, 0, 196622, 0, 0, 262150, 6, 0, 262153, 6, 0, 262155, 6, 0, 262157, 6, 0, 327681, 10, 0, 327682, 0, 0, 327683, 9, 0, 327686, 6, 0, 327688, 10, 0, 327689, 2, 0, 327690, 0, 0, 327691, 0, 0, 327692, 9, 0, 327693, 6, 0, 393217, 8, 0, 393218, 0, 0, 393219, 1, 0, 393220, 0, 0, 393221, 0, 0, 393222, 5, 0, 393223, 9, 0, 393224, 6, 0, 393225, 6, 0, 393227, 6, 0, 393228, 6, 0, 393229, 6, 0, 458755, 6, 0, 458759, 6, 0, 458760, 6, 0, 458761, 6, 0, 458763, 6, 0, 458764, 6, 0, 458765, 6, 0, 524291, 6, 0, 524296, 6, 0, 524297, 6, 0, 524299, 6, 0, 524300, 1, 0, 524301, 7, 0, 589827, 6, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 7, 0, 589833, 6, 0, 589835, 6, 0, 589836, 6, 0, 655363, 8, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 7, 0, 655371, 6, 0, 655372, 6, 0, 720907, 6, 0, 720908, 6, 0, 786439, 10, 0, 786440, 0, 0, 786441, 0, 0, 786442, 0, 0, 786443, 7, 0, 786444, 6, 0, 851975, 6, 0, 851980, 6, 0, 917511, 8, 0, 917512, 0, 0, 917513, 0, 0, 917514, 0, 0, 917515, 0, 0, 917516, 4, 0 )
+
+[node name="Tiles-PipeBoltedL" type="Sprite" parent="."]
+position = Vector2( 136, 313 )
+texture = ExtResource( 3 )
+
+[node name="Tiles-PipeBoltedL2" type="Sprite" parent="."]
+position = Vector2( 713, 169 )
+texture = ExtResource( 3 )
+
+[node name="Tiles-PipeBoltedL3" type="Sprite" parent="."]
+position = Vector2( 552, 235 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="Tiles-PipeBoltedL4" type="Sprite" parent="."]
+position = Vector2( 388.863, 62.2288 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+offset = Vector2( -17.0792, 27.6357 )
+
+[node name="Tiles-PipeBoltedL5" type="Sprite" parent="."]
+position = Vector2( 387, 399 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+offset = Vector2( -17.0792, 27.6357 )
+
+[node name="Tiles-PipeBoltedR" type="Sprite" parent="."]
+position = Vector2( 196, 456 )
+texture = ExtResource( 2 )
+
+[node name="Tiles-PipeBoltedL6" type="Sprite" parent="."]
+position = Vector2( 552, 291 )
+rotation = 4.71239
+texture = ExtResource( 3 )
