@@ -38,7 +38,7 @@ polygon = PoolVector2Array( 679, 6.99997, 16, 7, 16, 0, 679, -2.95639e-05 )
 [sub_resource type="OccluderPolygon2D" id=28]
 polygon = PoolVector2Array( 0, 0 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Maze5" type="Node2D"]
 position = Vector2( -3, 0 )
 
 [node name="TileMap" type="TileMap" parent="."]

@@ -3,7 +3,7 @@
 [ext_resource path="res://tilemap/tilemap2.tres" type="TileSet" id=1]
 [ext_resource path="res://PipeBoltedL.tscn" type="PackedScene" id=2]
 
-[node name="Node2D2" type="Node2D"]
+[node name="Maze3" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )

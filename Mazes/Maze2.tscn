@@ -30,7 +30,7 @@ extents = Vector2( 13.75, 5 )
 
 [sub_resource type="CanvasItemMaterial" id=25]
 
-[node name="Node2D2" type="Node2D"]
+[node name="Maze2" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 light_mask = 2
