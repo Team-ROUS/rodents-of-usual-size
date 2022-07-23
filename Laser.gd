@@ -61,3 +61,6 @@ func laser_update():
 			player_progress = 0
 		laser_set_map(map_idx)
 		last_change = OS.get_ticks_msec()
+		var pos = get_node("/root/Maze%d/player" % [map_idx+1]).get_position()
+		print("pos:")
+		print(pos)
