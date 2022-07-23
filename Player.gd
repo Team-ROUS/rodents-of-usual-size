@@ -75,7 +75,7 @@ func _physics_process(delta):
 
 
 	if Input.get_action_strength("ui_accept") > 0:
-		$Laser.laser_change_map()
+		$Laser.laser_update()
 
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
