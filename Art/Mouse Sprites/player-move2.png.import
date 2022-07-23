@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tiles - Pipe Bolted L.png-3cd587418bba305d44383ed76838d210.stex"
+path="res://.import/player-move2.png-903fd806327c7b93ce29a30136ad4565.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Tiles - Pipe Bolted L.png"
-dest_files=[ "res://.import/Tiles - Pipe Bolted L.png-3cd587418bba305d44383ed76838d210.stex" ]
+source_file="res://Art/Mouse Sprites/player-move2.png"
+dest_files=[ "res://.import/player-move2.png-903fd806327c7b93ce29a30136ad4565.stex" ]
 
 [params]
 

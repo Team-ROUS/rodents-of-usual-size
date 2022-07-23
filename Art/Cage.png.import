@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tiles - Pipe Bolted L.png-3cd587418bba305d44383ed76838d210.stex"
+path="res://.import/Cage.png-4e2302160c974f5e7318e6808fadf57d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Tiles - Pipe Bolted L.png"
-dest_files=[ "res://.import/Tiles - Pipe Bolted L.png-3cd587418bba305d44383ed76838d210.stex" ]
+source_file="res://Art/Cage.png"
+dest_files=[ "res://.import/Cage.png-4e2302160c974f5e7318e6808fadf57d.stex" ]
 
 [params]
 

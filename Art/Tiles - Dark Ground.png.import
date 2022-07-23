@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tiles - Pipe Bolted L.png-3cd587418bba305d44383ed76838d210.stex"
+path="res://.import/Tiles - Dark Ground.png-f042801e706a7cd20df0aab60d8c184a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Tiles - Pipe Bolted L.png"
-dest_files=[ "res://.import/Tiles - Pipe Bolted L.png-3cd587418bba305d44383ed76838d210.stex" ]
+source_file="res://Art/Tiles - Dark Ground.png"
+dest_files=[ "res://.import/Tiles - Dark Ground.png-f042801e706a7cd20df0aab60d8c184a.stex" ]
 
 [params]
 

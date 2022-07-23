@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tiles - Pipe Bolted L.png-3cd587418bba305d44383ed76838d210.stex"
+path="res://.import/gf-generics4.png-4f07a3c1f5786bd05fdb570dfb93b4ac.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Tiles - Pipe Bolted L.png"
-dest_files=[ "res://.import/Tiles - Pipe Bolted L.png-3cd587418bba305d44383ed76838d210.stex" ]
+source_file="res://Art/Mouse Sprites/gf-generics4.png"
+dest_files=[ "res://.import/gf-generics4.png-4f07a3c1f5786bd05fdb570dfb93b4ac.stex" ]
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
