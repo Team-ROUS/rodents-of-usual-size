@@ -4,7 +4,7 @@
 [ext_resource path="res://Art/Tiles - Pipe Bolted R.png" type="Texture" id=2]
 [ext_resource path="res://Art/Tiles - Pipe Bolted L.png" type="Texture" id=3]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
