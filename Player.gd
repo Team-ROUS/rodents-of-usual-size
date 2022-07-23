@@ -7,7 +7,7 @@ export(int) var MAXSPEED = 200
 export(int) var WALLJUMPFORCE = 400
 export(int) var JUMPFORCE = 400
 export(int) var ACCEL = 30
-export(int) var AIRMULTIPLIERCONTROLS = 0.7
+export(float) var AIRMULTIPLIERCONTROLS = 0.7
 
 const FacingX = {LEFT = -1, RIGHT = 1}
 
@@ -63,7 +63,6 @@ func _physics_process(delta):
 	
 	direction = get_direction()
 	var move_axis = get_move_axis()
-
 	if move_axis == "y":
 		motion[move_axis] += (ACCEL * direction * -is_near_wall() * get_motion_multiplier())
 	else:
@@ -81,10 +80,10 @@ func _physics_process(delta):
 		if get_direction() == 0:
 			motion.y = lerp(motion.y, 0, 0.2)
 		if Input.is_action_just_pressed("jump"):
-			motion.x = JUMPFORCE * -is_near_wall()
-			motion.y = -JUMPFORCE
+			motion.x = WALLJUMPFORCE * -is_near_wall()
+			motion.y = -WALLJUMPFORCE
 		if Input.is_action_just_pressed("down"):
-			motion.x = JUMPFORCE * -is_near_wall()
+			motion.x = WALLJUMPFORCE * -is_near_wall()
 	if get_direction() == 0:
 		motion.x = lerp(motion.x, 0, 0.2)
 	motion.x = clamp(motion.x, -MAXSPEED, MAXSPEED)
