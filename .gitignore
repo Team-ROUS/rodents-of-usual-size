@@ -11,3 +11,4 @@ data_*/
 # sercomm build files
 addons/GDSerCommDock/bin/libGDSercomm.dylib
 GDSercomm
+GDSercomm.zip
