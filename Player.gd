@@ -27,6 +27,8 @@ func _process(delta):
 		var finish = get_node("Finish")
 		if(finish.occupied == true):
 			$AcceptDialog.popup()
+			print("dialog box supposed to open")
+			print("next level needs to start...")
 			game_end = true;
 
 
