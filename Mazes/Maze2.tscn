@@ -58,62 +58,62 @@ cell_size = Vector2( 1, 1 )
 format = 1
 tile_data = PoolIntArray( 18481483, 2, 0, 18481487, 2, 0, 18547019, 2, 0, 18547023, 2, 0, 18547029, 2, 0, 18612562, 2, 0, 18612566, 2, 0, 18678099, 2, 0, 18678105, 2, 0, 18743621, 2, 0, 18743638, 2, 0, 18809175, 2, 0, 18809177, 2, 0, 18809178, 2, 0, 18874711, 2, 0, 19136837, 2, 0, 19202394, 6, 0, 19202409, 6, 0, 19202439, 6, 0, 19202469, 6, 0, 19202499, 6, 0, 19202529, 6, 0, 19202559, 6, 0, 19202589, 6, 0, 19202618, 6, 0, 19202648, 6, 0, 19202678, 6, 0, 19202708, 6, 0, 19202738, 6, 0, 19530053, 2, 0, 19595589, 2, 0, 19661125, 2, 0, 19726661, 2, 0, 19792197, 2, 0, 19857733, 2, 0, 19923269, 2, 0, 19988805, 2, 0, 20054341, 2, 0, 20119877, 2, 0, 20185413, 2, 0, 20250949, 2, 0, 20316485, 2, 0, 20382021, 2, 0, 20447557, 2, 0, 20513093, 2, 0, 20578629, 2, 0, 20644165, 2, 0, 20709701, 2, 0, 20775237, 2, 0, 20840773, 2, 0, 20906309, 2, 0, 20971845, 2, 0, 21037381, 2, 0, 21102917, 2, 0, 21496133, 2, 0, 21561669, 2, 0, 21627205, 2, 0, 21627223, 2, 0, 21627226, 6, 0, 21627256, 6, 0, 21627286, 6, 0, 21627316, 6, 0, 21627346, 6, 0, 21627376, 6, 0, 21627406, 2, 0, 21627407, 2, 0, 21627451, 6, 0, 21627481, 6, 0, 21627511, 6, 0, 21627541, 6, 0, 21627570, 6, 0, 21692741, 2, 0, 21692762, 2, 0, 21692949, 5, 0, 21692986, 5, 0, 21758277, 2, 0, 21823833, 2, 0, 21889366, 2, 0, 21889367, 2, 0, 21954899, 2, 0, 21954901, 2, 0, 22020434, 2, 0, 22085963, 2, 0, 22085969, 2, 0, 23462458, 5, 0, 23659029, 5, 0, 25231930, 5, 0, 25625109, 5, 0, 26870330, 5, 0, 27591184, 2, 0, 27787792, 2, 0, 28049936, 2, 0, 28115514, 5, 0, 28246544, 2, 0, 28312079, 2, 0, 28377385, 2, 0, 28442919, 2, 0, 28508453, 2, 0, 28573988, 2, 0, 28639523, 2, 0, 28639529, 6, 0, 28639552, 6, 0, 28639581, 6, 0, 28639611, 6, 0, 28639641, 6, 0, 28639671, 6, 0, 28639701, 6, 0, 28639729, 6, 0, 28770594, 2, 0, 28901665, 2, 0, 29294885, 5, 0, 29426234, 5, 0, 30474809, 5, 0, 30671416, 5, 0, 30802487, 6, 0, 30868022, 6, 0, 30933556, 6, 0, 30999089, 6, 0, 31064395, 6, 0, 31064425, 6, 0, 31064455, 6, 0, 31064471, 6, 0, 31064539, 6, 0, 31064569, 6, 0, 31064599, 6, 0, 31129930, 5, 0, 31130037, 5, 0, 31130074, 5, 0, 31195573, 5, 0, 31260965, 5, 0, 31523290, 5, 0, 31588682, 5, 0, 32375258, 5, 0, 32964938, 5, 0, 32965045, 5, 0, 33227045, 5, 0, 33817050, 5, 0, 34144586, 4, 0, 34144588, 4, 0, 34144592, 2, 0, 34144593, 2, 0, 34210122, 4, 0, 34210135, 2, 0, 34275672, 2, 0, 34341199, 5, 0, 34341211, 2, 0, 34472267, 4, 0, 34537803, 4, 0, 34537820, 2, 0, 34603339, 4, 0, 34668874, 5, 0, 34668875, 4, 0, 34734411, 4, 0, 34799947, 4, 0, 34865483, 4, 0, 34931019, 4, 0, 34931036, 6, 0, 34931065, 6, 0, 34931095, 6, 0, 34996555, 4, 0, 35062091, 4, 0, 35127627, 4, 0, 35193125, 5, 0, 35193163, 4, 0, 35258699, 4, 0, 35324235, 4, 0, 35389771, 4, 0, 35455307, 4, 0, 35520843, 4, 0, 35586379, 4, 0, 35651915, 4, 0, 35717451, 4, 0, 35717594, 5, 0, 35782987, 4, 0, 35848523, 4, 0, 35914059, 4, 0, 35979595, 4, 0, 36045131, 4, 0, 36110667, 4, 0, 36110671, 5, 0, 36176203, 4, 0, 36241739, 4, 0, 36307275, 4, 0, 36372810, 5, 0, 36372811, 4, 0, 36438347, 4, 0, 36503883, 4, 0, 36569419, 4, 0, 36634955, 4, 0, 36700491, 4, 0, 36766027, 4, 0, 36766169, 5, 0, 36831563, 4, 0, 36897099, 4, 0, 36962635, 4, 0, 36962776, 5, 0, 37028171, 4, 0, 37093707, 4, 0, 37093847, 6, 0, 37159205, 5, 0, 37159242, 4, 0, 37159243, 4, 0, 37159382, 6, 0, 37224778, 4, 0, 37224916, 6, 0, 37290314, 4, 0, 37290449, 6, 0, 37355850, 4, 0, 37355868, 2, 0, 37355874, 6, 0, 37355904, 6, 0, 37355934, 6, 0, 37355964, 6, 0, 37421386, 4, 0, 37486922, 4, 0, 37486939, 2, 0, 37552472, 2, 0, 37552473, 2, 0, 37618007, 2, 0, 37683536, 2, 0, 37683537, 2, 0, 37814603, 4, 0, 38142282, 5, 0, 39125285, 5, 0, 39387466, 5, 0, 40567114, 5, 0, 41091365, 5, 0, 41746762, 5, 0, 42664266, 5, 0, 43057440, 2, 0, 43450656, 2, 0, 43516192, 2, 0, 43581728, 2, 0, 43647264, 2, 0, 43712800, 2, 0, 43778336, 2, 0, 43843872, 2, 0, 43909408, 2, 0, 43974944, 2, 0, 44040479, 2, 0, 44302666, 5, 0, 44367968, 6, 0, 44367989, 6, 0, 44368014, 6, 0, 44368043, 6, 0, 44368071, 6, 0, 44368100, 6, 0, 44368129, 6, 0, 46203209, 2, 0, 46399816, 2, 0, 46530887, 2, 0, 46596422, 2, 0, 46661956, 2, 0, 46727489, 2, 0, 46792800, 6, 0, 46792830, 6, 0, 46792860, 6, 0, 46792890, 6, 0, 46792920, 6, 0, 46792950, 6, 0, 46792980, 6, 0, 46793010, 6, 0 )
 
-[node name="player2" type="KinematicBody2D" parent="." groups=["player"]]
+[node name="player" type="KinematicBody2D" parent="." groups=["player"]]
 position = Vector2( 310, 550 )
 script = ExtResource( 10 )
 JUMPFORCE = 500
 ACCEL = 15
 
-[node name="Node2D" type="Node2D" parent="player2"]
+[node name="Node2D" type="Node2D" parent="player"]
 position = Vector2( -150, -90 )
 z_index = 1
 
-[node name="Circle2" type="Sprite" parent="player2/Node2D"]
+[node name="Circle2" type="Sprite" parent="player/Node2D"]
 light_mask = 2
 material = SubResource( 23 )
 position = Vector2( 151, 91 )
 scale = Vector2( 4.86, 4.86 )
 texture = ExtResource( 8 )
 
-[node name="TopBlackout" type="Sprite" parent="player2/Node2D"]
+[node name="TopBlackout" type="Sprite" parent="player/Node2D"]
 light_mask = 2
 position = Vector2( 6944, -33853 )
 scale = Vector2( 97.9209, 139.705 )
 texture = ExtResource( 5 )
 
-[node name="RightBlackout" type="Sprite" parent="player2/Node2D"]
+[node name="RightBlackout" type="Sprite" parent="player/Node2D"]
 light_mask = 2
 position = Vector2( 10630, -15981 )
 scale = Vector2( 31.3513, 238.638 )
 texture = ExtResource( 5 )
 
-[node name="LeftBlackout2" type="Sprite" parent="player2/Node2D"]
+[node name="LeftBlackout2" type="Sprite" parent="player/Node2D"]
 light_mask = 2
 position = Vector2( 32553, 13574 )
 scale = Vector2( 107.709, 84.6323 )
 texture = ExtResource( 5 )
 offset = Vector2( -233.783, 85.7721 )
 
-[node name="LeftBlackout" type="Sprite" parent="player2/Node2D"]
+[node name="LeftBlackout" type="Sprite" parent="player/Node2D"]
 light_mask = 2
 position = Vector2( -745, -2125 )
 scale = Vector2( 5.59922, 15.4479 )
 texture = ExtResource( 5 )
 offset = Vector2( -233.783, 85.7721 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 position = Vector2( 1, 0.5 )
 scale = Vector2( 0.4, 0.5 )
 shape = SubResource( 24 )
 
-[node name="Sprite" type="Sprite" parent="player2"]
+[node name="Sprite" type="Sprite" parent="player"]
 light_mask = 2
 material = SubResource( 25 )
 position = Vector2( 1, -1 )
 scale = Vector2( 0.4, 0.5 )
 texture = ExtResource( 11 )
 
-[node name="Shadow mask" type="Light2D" parent="player2"]
+[node name="Shadow mask" type="Light2D" parent="player"]
 z_index = 1
 texture = ExtResource( 9 )
 color = Color( 1, 1, 1, 0 )
@@ -121,30 +121,30 @@ mode = 3
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
 
-[node name="Illumination" type="Light2D" parent="player2"]
+[node name="Illumination" type="Light2D" parent="player"]
 position = Vector2( 2, 8 )
 texture = ExtResource( 8 )
 texture_scale = 5.0
 color = Color( 1, 1, 1, 0 )
 energy = 0.5
 
-[node name="Wallcheckerfront" type="RayCast2D" parent="player2"]
+[node name="Wallcheckerfront" type="RayCast2D" parent="player"]
 rotation = -1.5708
 scale = Vector2( 0.1, 0.15 )
 enabled = true
 
-[node name="Wallcheckerback" type="RayCast2D" parent="player2"]
+[node name="Wallcheckerback" type="RayCast2D" parent="player"]
 rotation = 1.5708
 scale = Vector2( 0.1, 0.15 )
 enabled = true
 
-[node name="Laser" type="Node" parent="player2"]
+[node name="Laser" type="Node" parent="player"]
 script = ExtResource( 7 )
 
-[node name="Com" type="Node" parent="player2/Laser"]
+[node name="Com" type="Node" parent="player/Laser"]
 script = ExtResource( 6 )
 
-[node name="Camera2D" type="Camera2D" parent="player2"]
+[node name="Camera2D" type="Camera2D" parent="player"]
 current = true
 zoom = Vector2( 0.2, 0.2 )
 
