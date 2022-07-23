@@ -14,6 +14,14 @@ config/name="Rodents of Usual Size"
 run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
+[layer_names]
+
+2d_physics/layer_1=true
+2d_physics/layer_2="player"
+2d_physics/layer_3="finish"
+2d_physics/layer_4="background"
+2d_physics/layer_5="wall"
+
 [physics]
 
 common/enable_pause_aware_picking=true
