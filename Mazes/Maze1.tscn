@@ -1,16 +1,37 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://tilemap/tilemap2.tres" type="TileSet" id=1]
 [ext_resource path="res://Art/Tiles - Pipe Bolted L.png" type="Texture" id=2]
-[ext_resource path="res://Art/placeholder rodent.png" type="Texture" id=3]
-[ext_resource path="res://Mazes/KinematicBody2D.gd" type="Script" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://black.jpeg" type="Texture" id=4]
+[ext_resource path="res://Player.gd" type="Script" id=5]
+[ext_resource path="res://Com.gd" type="Script" id=6]
+[ext_resource path="res://Laser.gd" type="Script" id=7]
+[ext_resource path="res://white.png" type="Texture" id=8]
+[ext_resource path="res://light.png" type="Texture" id=9]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 8 )
+[sub_resource type="Shader" id=22]
+code = "shader_type canvas_item;
+
+
+void fragment() {
+    float radial = distance(UV, vec2(0.5)); // Creates a radial gradient.
+    radial = smoothstep(radial+0.001, radial-0.001, 0.05); //Steps it to be binary.
+	COLOR = vec4(0., 0., 0., radial);
+}"
+
+[sub_resource type="ShaderMaterial" id=23]
+shader = SubResource( 22 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="CanvasItemMaterial" id=25]
 
 [node name="Node2D2" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+light_mask = 2
 z_index = -10
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 48, 48 )
@@ -22,20 +43,83 @@ position = Vector2( 360, 432 )
 rotation = 1.5708
 texture = ExtResource( 2 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
-position = Vector2( 26, 365 )
-scale = Vector2( 0.3, 0.3 )
-z_index = 10
-script = ExtResource( 4 )
+[node name="player" type="KinematicBody2D" parent="." groups=["player"]]
+position = Vector2( 100, 360 )
+script = ExtResource( 5 )
+JUMPFORCE = 500
+ACCEL = 15
 
-[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
+[node name="Node2D" type="Node2D" parent="player"]
+position = Vector2( -150, -90 )
+
+[node name="Circle2" type="Sprite" parent="player/Node2D"]
 light_mask = 2
-z_index = 12
+material = SubResource( 23 )
+position = Vector2( 151, 91 )
+scale = Vector2( 4.86, 4.86 )
+texture = ExtResource( 8 )
+
+[node name="TopBlackout" type="Sprite" parent="player/Node2D"]
+light_mask = 2
+position = Vector2( 6944, -33853 )
+scale = Vector2( 97.9209, 139.705 )
+texture = ExtResource( 4 )
+
+[node name="RightBlackout" type="Sprite" parent="player/Node2D"]
+light_mask = 2
+position = Vector2( 10630, -15981 )
+scale = Vector2( 31.3513, 238.638 )
+texture = ExtResource( 4 )
+
+[node name="LeftBlackout2" type="Sprite" parent="player/Node2D"]
+light_mask = 2
+position = Vector2( 32553, 13574 )
+scale = Vector2( 107.709, 84.6323 )
+texture = ExtResource( 4 )
+offset = Vector2( -233.783, 85.7721 )
+
+[node name="LeftBlackout" type="Sprite" parent="player/Node2D"]
+light_mask = 2
+position = Vector2( -745, -2125 )
+scale = Vector2( 5.59922, 15.4479 )
+texture = ExtResource( 4 )
+offset = Vector2( -233.783, 85.7721 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+scale = Vector2( 0.1, 0.1 )
+shape = SubResource( 24 )
+
+[node name="Sprite" type="Sprite" parent="player"]
+light_mask = 2
+material = SubResource( 25 )
+scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 3 )
 
-[node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
-current = true
-zoom = Vector2( 0.4, 0.4 )
+[node name="Shadow mask" type="Light2D" parent="player"]
+texture = ExtResource( 9 )
+texture_scale = 10.0
+color = Color( 1, 1, 1, 0 )
+mode = 3
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-shape = SubResource( 1 )
+[node name="Illumination" type="Light2D" parent="player"]
+position = Vector2( 2, 8 )
+texture = ExtResource( 8 )
+texture_scale = 50.0
+color = Color( 1, 1, 1, 0 )
+energy = 0.5
+
+[node name="Wallcheckerfront" type="RayCast2D" parent="player"]
+rotation = -1.5708
+enabled = true
+
+[node name="Wallcheckerback" type="RayCast2D" parent="player"]
+rotation = 1.5708
+enabled = true
+
+[node name="Laser" type="Node" parent="player"]
+script = ExtResource( 7 )
+
+[node name="Com" type="Node" parent="player/Laser"]
+script = ExtResource( 6 )
