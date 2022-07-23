@@ -173,8 +173,8 @@ extents = Vector2( 32, 32 )
 position = Vector2( -68, 67 )
 
 [node name="Sprite" type="Sprite" parent="ExplodingBarrel"]
+light_mask = 2
 position = Vector2( -3, 53 )
-z_index = 1100
 texture = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplodingBarrel"]
