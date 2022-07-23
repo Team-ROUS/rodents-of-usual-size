@@ -86,32 +86,14 @@ func _physics_process(delta):
 		if not is_on_floor():
 			motion.x += GRAVITY * direction
 
-		if Input.is_action_pressed("jump"):
-			motion.x = -JUMPFORCE * direction
-			motion.y = -JUMPFORCE
-		elif Input.is_action_pressed("right"):
-			if direction == 1:
-				print("up")
-				facingY = "up"
-			elif direction == -1:
-				facingY = "down"
-				print("down")
-			motion.y -= ACCEL * direction
-		elif Input.is_action_pressed("left"):
-			if direction == 1:
-				facingY = "down"
-				print("down")
-			elif direction == -1:
-				facingY = "up"
-				print("up")
-			motion.y += ACCEL * direction
-
-		else:
-			motion.y = lerp(motion.y, 0, 0.2)
-			
-			
-			
-	motion = move_and_slide(motion, UP)
+func _process(delta):
+	if game_end == false:
+		var finish = get_node("Finish")
+		if(finish.occupied == true):
+			$AcceptDialog.popup()
+			print("dialog box supposed to open")
+			print("next level needs to start...")
+			game_end = true;
 	
 	
 func is_near_wall():
