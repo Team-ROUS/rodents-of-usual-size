@@ -1,0 +1,20 @@
+[general]
+
+singleton=false
+load_once=true
+symbol_prefix="godot_"
+reloadable=false
+
+[entry]
+
+OSX.64="res://addons/GDSerCommDock/bin/libGDSercomm.dylib"
+Windows.64="res://addons/GDSerCommDock/bin/GDSercomm.dll"
+X11.64="res://addons/GDSerCommDock/bin/libGDSercomm.so"
+X11.32="res://addons/GDSerCommDock/bin/libGDSercomm.so"
+
+[dependencies]
+
+OSX.64=[  ]
+Windows.64=[  ]
+X11.64=[  ]
+X11.32=[  ]
