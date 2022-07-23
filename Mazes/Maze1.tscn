@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://tilemap/tilemap2.tres" type="TileSet" id=1]
 [ext_resource path="res://Art/Tiles - Pipe Bolted L.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Art/Tiles - Pipe Exit R.png" type="Texture" id=11]
 [ext_resource path="res://Art/Tiles - Dark Ground.png" type="Texture" id=12]
 [ext_resource path="res://CagedGF.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Finish.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Shader" id=22]
 code = "shader_type canvas_item;
@@ -43,7 +44,6 @@ format = 1
 tile_data = PoolIntArray( 262154, 10, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 327690, 6, 0, 393226, 6, 0, 458752, 12, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 3, 0, 458760, 0, 0, 458761, 0, 0, 458762, 7, 0, 524295, 6, 0 )
 
 [node name="player" type="KinematicBody2D" parent="." groups=["player"]]
-visible = false
 position = Vector2( 100, 360 )
 script = ExtResource( 5 )
 JUMPFORCE = 500
@@ -152,3 +152,6 @@ texture = ExtResource( 12 )
 
 [node name="Node2D" parent="." instance=ExtResource( 13 )]
 position = Vector2( 796, 211 )
+
+[node name="Finish" parent="." instance=ExtResource( 14 )]
+position = Vector2( 723, 217 )
