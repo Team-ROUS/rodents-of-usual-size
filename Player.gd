@@ -115,6 +115,9 @@ func _physics_process(delta):
 			
 	motion = move_and_slide(motion, UP)
 	
+	if Input.is_action_just_pressed("esc"):
+		get_tree().change_scene("res://Menus/GameMenu.tscn");
+	
 	
 func is_near_wall():
 	if $Wallcheckerfront.is_colliding():

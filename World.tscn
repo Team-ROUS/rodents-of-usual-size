@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -8,7 +8,9 @@
 [ext_resource path="res://white.png" type="Texture" id=6]
 [ext_resource path="res://black.jpeg" type="Texture" id=7]
 [ext_resource path="res://Laser.gd" type="Script" id=8]
-[ext_resource path="res://Art/exploding_barrel.png" type="Texture" id=9]
+[ext_resource path="res://Art/placeholder tiles.png" type="Texture" id=9]
+[ext_resource path="res://Art/exploding_barrel.png" type="Texture" id=10]
+[ext_resource path="res://World.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 10, 12.125 )
@@ -148,6 +150,20 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 3/z_index = 0
+4/name = "placeholder tiles.png 4"
+4/texture = ExtResource( 9 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( -3, -1, 47, 49 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
 
 [sub_resource type="Shader" id=19]
 code = "shader_type canvas_item;
@@ -168,6 +184,7 @@ extents = Vector2( 32, 32 )
 [sub_resource type="CanvasItemMaterial" id=15]
 
 [node name="World" type="Node2D"]
+script = ExtResource( 11 )
 
 [node name="ExplodingBarrel" type="RigidBody2D" parent="."]
 position = Vector2( -68, 67 )
@@ -175,7 +192,7 @@ position = Vector2( -68, 67 )
 [node name="Sprite" type="Sprite" parent="ExplodingBarrel"]
 light_mask = 2
 position = Vector2( -3, 53 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplodingBarrel"]
 position = Vector2( -3, 53.125 )
