@@ -18,5 +18,5 @@ func _physics_process(delta):
 
 	var x = -left if left > 0 else right
 	var y = -up if up > 0 else down
-	$Player/KinematicBody2D.move_and_slide(Vector2(x * 100, y * 100))
+	$Player/KinematicBody2D.move_and_slide(Vector2(x * 300, y * 300))
 
