@@ -13,9 +13,22 @@ var maps = [
 	"14,0,RDDRRUURRRRRRDLDLULLDDDRRRRRURRDDDLLDLLULULLLDDRRDDLLLUUULDDDDDLUUUUULDDDDDDDRRRRRUURRDDRRRRRUUULLL",
 	"0,0,RUURDRRUUUULUUURRDRUULLLLLUUURRDRUUURDDDDRRDDDRDDDDRURDDRUURUUUURUUULLLDLDRRDLLLUUUUURRRRDRR",
 ]
-var map_idx = 0
 var player_progress = 0
 var last_change = OS.get_ticks_msec()
+
+func get_map_idx():
+	var name = get_tree().get_current_scene().get_name()
+	if name == "Maze1":
+		return 0
+	elif name == "Maze2":
+		return 1
+	elif name == "Maze3":
+		return 2
+	elif name == "Maze4":
+		return 3
+	elif name == "Maze5":
+		return 4
+	
 
 func plugin_installed():
 	var directory = Directory.new();
@@ -34,7 +47,7 @@ func _ready():
 		PORT.flush()
 		laser_update()
 
-func laser_set_map():
+func laser_set_map(map_idx):
 	if plugin_installed():
 		var tmp = "%d,%d\n" % [map_idx, player_progress]
 		PORT.write(tmp)
@@ -42,8 +55,9 @@ func laser_set_map():
 
 func laser_update():
 	if OS.get_ticks_msec() - last_change > 150:
+		var map_idx = get_map_idx()
 		player_progress += 1
 		if player_progress >= len(maps[map_idx]):
 			player_progress = 0
-		laser_set_map()
+		laser_set_map(map_idx)
 		last_change = OS.get_ticks_msec()
