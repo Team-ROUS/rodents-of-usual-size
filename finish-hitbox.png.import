@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/goal.png-d8026b4c83cd0c976a2c07258ba1a29e.stex"
+path="res://.import/finish-hitbox.png-83a520aa4ce83d0dc01adb220355226f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://goal.png"
-dest_files=[ "res://.import/goal.png-d8026b4c83cd0c976a2c07258ba1a29e.stex" ]
+source_file="res://finish-hitbox.png"
+dest_files=[ "res://.import/finish-hitbox.png-83a520aa4ce83d0dc01adb220355226f.stex" ]
 
 [params]
 
