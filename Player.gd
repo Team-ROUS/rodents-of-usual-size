@@ -24,18 +24,7 @@ func get_motion_multiplier():
 		return AIRMULTIPLIERCONTROLS
 	return 1.0
 
-<<<<<<< Updated upstream
-	var space = Input.get_action_strength("ui_select")
-	if space > 0:
-		$Laser.laser_change_map()
-		
-			
-	if is_on_floor():
-		facingY = "none"
-	
-=======
 func handle_gravity():
->>>>>>> Stashed changes
 	if not is_on_wall():
 		motion.y += GRAVITY
 	else:

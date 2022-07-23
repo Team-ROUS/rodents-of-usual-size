@@ -14,11 +14,7 @@ dest_files=[ "res://.import/placeholder tiles.png-af044a819ecfc04333e37c58debe7d
 
 [params]
 
-<<<<<<< Updated upstream
 compress/mode=3
-=======
-compress/mode=0
->>>>>>> Stashed changes
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
