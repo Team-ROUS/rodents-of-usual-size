@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Art/Mouse Sprites/GFSprites.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Art/Cage.png" type="Texture" id=2]
+[ext_resource path="res://GFScript.gd" type="Script" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Cage" type="Sprite" parent="."]
+z_index = 1
+texture = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Cage"]
+position = Vector2( 0, 5 )
+z_index = -1
+frames = ExtResource( 1 )
+script = ExtResource( 3 )
