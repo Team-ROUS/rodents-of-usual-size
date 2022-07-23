@@ -4,7 +4,7 @@ const UP = Vector2(0, -1)
 const GRAVITY = 25
 const MAXFALLSPEED = 400
 const MAXSPEED = 200	
-export(int) var JUMPFORCE  = 600
+export(int) var JUMPFORCE  = 400
 const ACCEL = 10
 const AIRMULTIPLIERCONTROLS = 0.7
 const AIRMULTIPLERX = 0.1
@@ -53,7 +53,7 @@ func _physics_process(delta):
 				facingX = "left"
 			else:
 				motion.x = lerp(motion.x, 0, 0.2)
-			if Input.is_action_pressed("jump"):
+			if Input.is_action_just_pressed("jump"):
 				motion.y = -JUMPFORCE
 		else:
 			if Input.is_action_pressed("right"):
@@ -86,7 +86,7 @@ func _physics_process(delta):
 		if not is_on_floor():
 			motion.x += GRAVITY * direction
 
-		if Input.is_action_pressed("jump"):
+		if Input.is_action_just_pressed("jump"):
 			motion.x = -JUMPFORCE * direction
 			motion.y = -JUMPFORCE
 		elif Input.is_action_pressed("right"):
@@ -97,7 +97,7 @@ func _physics_process(delta):
 				facingY = "down"
 				print("down")
 			motion.y -= ACCEL * direction
-		elif Input.is_action_pressed("left"):
+		elif Input.is_action_just_pressed("left"):
 			if direction == 1:
 				facingY = "down"
 				print("down")
