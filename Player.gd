@@ -1,5 +1,6 @@
 extends Node2D
 
+var game_end = false; 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,3 +21,14 @@ func _physics_process(delta):
 	var y = -up if up > 0 else down
 	$Player/KinematicBody2D.move_and_slide(Vector2(x * 300, y * 300))
 
+
+func _process(delta):
+	if game_end == false:
+		var finish = get_node("Finish")
+		if(finish.occupied == true):
+			$AcceptDialog.popup()
+			game_end = true;
+
+
+func _on_AcceptDialog_confirmed():
+	print("next level")
