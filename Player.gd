@@ -30,7 +30,9 @@ func _physics_process(delta):
 #	if is_near_wall():
 #		motion.x += ACCEL * direction
 
-	
+	var space = Input.get_action_strength("ui_select")
+	if space > 0:
+		$Laser.laser_change_map()
 		
 			
 	if is_on_floor():
