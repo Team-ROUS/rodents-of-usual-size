@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/goal.png-d8026b4c83cd0c976a2c07258ba1a29e.stex"
+path="res://.import/Tiles - Dark Ground.png-f042801e706a7cd20df0aab60d8c184a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://goal.png"
-dest_files=[ "res://.import/goal.png-d8026b4c83cd0c976a2c07258ba1a29e.stex" ]
+source_file="res://Art/Tiles - Dark Ground.png"
+dest_files=[ "res://.import/Tiles - Dark Ground.png-f042801e706a7cd20df0aab60d8c184a.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

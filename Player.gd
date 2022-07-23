@@ -1,13 +1,14 @@
 extends KinematicBody2D
 
 const UP = Vector2(0, -1)
-const GRAVITY = 25
-const MAXFALLSPEED = 400
-const MAXSPEED = 200
+export(int) var GRAVITY = 25
+export(int) var MAXFALLSPEED = 400
+export(int) var MAXSPEED = 200
+export(int) var WALLJUMPFORCE = 400
 export(int) var JUMPFORCE = 400
 export(int) var ACCEL = 30
-const AIRMULTIPLIERCONTROLS = 0.7
-const AIRMULTIPLERX = 0.1
+export(float) var AIRMULTIPLIERCONTROLS = 0.7
+
 const FacingX = {LEFT = -1, RIGHT = 1}
 
 var motion = Vector2()
@@ -62,11 +63,14 @@ func _physics_process(delta):
 	
 	direction = get_direction()
 	var move_axis = get_move_axis()
-
 	if move_axis == "y":
 		motion[move_axis] += (ACCEL * direction * -is_near_wall() * get_motion_multiplier())
 	else:
 		motion[move_axis] += (ACCEL * direction  * get_motion_multiplier())
+
+
+	if Input.get_action_strength("ui_accept") > 0:
+		$Laser.laser_change_map()
 
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
@@ -76,10 +80,10 @@ func _physics_process(delta):
 		if get_direction() == 0:
 			motion.y = lerp(motion.y, 0, 0.2)
 		if Input.is_action_just_pressed("jump"):
-			motion.x = JUMPFORCE * -is_near_wall()
-			motion.y = -JUMPFORCE
-		if Input.is_action_just_pressed("ui_down"):
-			motion.x = (GRAVITY + 10) * -is_near_wall()
+			motion.x = WALLJUMPFORCE * -is_near_wall()
+			motion.y = -WALLJUMPFORCE
+		if Input.is_action_just_pressed("down"):
+			motion.x = WALLJUMPFORCE * -is_near_wall()
 	if get_direction() == 0:
 		motion.x = lerp(motion.x, 0, 0.2)
 	motion.x = clamp(motion.x, -MAXSPEED, MAXSPEED)
@@ -102,11 +106,7 @@ func is_near_wall():
 
 
 func rotate_mouse():
-	$Sprite.scale.x *= facingX
-
-	if is_near_wall() == -1:
-		$Sprite.rotation_degrees = -90 * facingX
-	if  is_near_wall() == 0:
-		$Sprite.rotation_degrees = 0
-	if  is_near_wall() == 1:
-		$Sprite.rotation_degrees = 90 * facingX
+	$Sprite.scale.x = abs($Sprite.scale.x) * facingX
+	$Sprite.rotation_degrees = 0
+	$Sprite.rotation_degrees = 90 * -is_near_wall()
+ 
