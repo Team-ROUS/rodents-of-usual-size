@@ -1,34 +1,141 @@
-extends Node2D
+extends KinematicBody2D
 
-var game_end = false; 
+const UP = Vector2(0, -1)
+const GRAVITY = 25
+const MAXFALLSPEED = 400
+const MAXSPEED = 200	
+export(int) var JUMPFORCE  = 600
+const ACCEL = 10
+const AIRMULTIPLIERCONTROLS = 0.7
+const AIRMULTIPLERX = 0.1
+
+var motion = Vector2()
+var direction = 1
+var facingX = "right"
+var facingY = "none"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 func _physics_process(delta):
-	var left = Input.get_action_strength("ui_left")
-	var right = Input.get_action_strength("ui_right")
-	var up = Input.get_action_strength("ui_up")
-	var down = Input.get_action_strength("ui_down")
+	print(direction)
+	motion.x = clamp(motion.x, -MAXSPEED, MAXSPEED)
+	rotate_mouse(facingX, facingY)
+	$Wallcheckerfront.rotation_degrees = 90 * -direction
+	$Wallcheckerfront.rotation_degrees = 90 * direction
+	if is_near_wall() != 0:
+		direction = is_near_wall()
+	
+#	if is_near_wall():
+#		motion.x += ACCEL * direction
 
-	var x = -left if left > 0 else right
-	var y = -up if up > 0 else down
-	$Player/KinematicBody2D.move_and_slide(Vector2(x * 300, y * 300))
+	
+		
+			
+	if is_on_floor():
+		facingY = "none"
+	
+	if not is_on_wall():
+		facingY = "none"
+		motion.y += GRAVITY
+		if motion.y > MAXFALLSPEED:
+			motion.y = MAXFALLSPEED
+			
+		if is_on_floor():
+			if Input.is_action_pressed("right"):
+				motion.x += ACCEL
+				direction = 1
+				facingX = "right"
+			elif Input.is_action_pressed("left"):
+				motion.x -= ACCEL
+				direction = -1
+				facingX = "left"
+			else:
+				motion.x = lerp(motion.x, 0, 0.2)
+			if Input.is_action_pressed("jump"):
+				motion.y = -JUMPFORCE
+		else:
+			if Input.is_action_pressed("right"):
+				motion.x += ACCEL * AIRMULTIPLIERCONTROLS
+				direction = 1
+				facingX = "right"
+			elif Input.is_action_pressed("left"):
+				motion.x -= ACCEL * AIRMULTIPLIERCONTROLS
+				direction = -1
+				facingX = "left"
+			else:
+				motion.x = lerp(motion.x, 0, 0.2 * AIRMULTIPLERX)
+			
+		
+	
+	elif is_on_wall():
+		if is_on_floor():
+			if direction == -1:
+				if Input.is_action_pressed("left"):
+					motion.y = -ACCEL
+				if Input.is_action_pressed("right"):
+					motion.x = -ACCEL * direction
+			elif direction == 1:
+				if Input.is_action_pressed("right"):
+					motion.y = -ACCEL
+				if Input.is_action_pressed("left"):
+					motion.x = -ACCEL * direction
+		
+		motion.y = clamp(motion.y, -MAXSPEED, MAXSPEED)
+		if not is_on_floor():
+			motion.x += GRAVITY * direction
 
+		if Input.is_action_pressed("jump"):
+			motion.x = -JUMPFORCE * direction
+			motion.y = -JUMPFORCE
+		elif Input.is_action_pressed("right"):
+			if direction == 1:
+				print("up")
+				facingY = "up"
+			elif direction == -1:
+				facingY = "down"
+				print("down")
+			motion.y -= ACCEL * direction
+		elif Input.is_action_pressed("left"):
+			if direction == 1:
+				facingY = "down"
+				print("down")
+			elif direction == -1:
+				facingY = "up"
+				print("up")
+			motion.y += ACCEL * direction
 
-func _process(delta):
-	if game_end == false:
-		var finish = get_node("Finish")
-		if(finish.occupied == true):
-			$AcceptDialog.popup()
-			game_end = true;
-
-
-func _on_AcceptDialog_confirmed():
-	print("next level")
+		else:
+			motion.y = lerp(motion.y, 0, 0.2)
+			
+			
+			
+	motion = move_and_slide(motion, UP)
+	
+	
+func is_near_wall():
+	if $Wallcheckerfront.is_colliding():
+		return 1
+	if $Wallcheckerback.is_colliding():
+		return -1
+	else:
+		return 0
+	
+func rotate_mouse(x, y):
+	$Sprite.scale.x = direction
+	$CollisionShape2D.scale.x = direction
+		
+	if y == "up":
+		$Sprite.rotation_degrees = -90 * direction
+#		$CollisionShape2D.rotation_degrees = 180 * direction
+		$Sprite.scale.y = 1
+	elif y == "none":
+		$Sprite.rotation_degrees = 0
+#		$CollisionShape2D.rotation_degrees = 0
+		$Sprite.scale.y = 1
+	elif y == "down":
+		$Sprite.rotation_degrees = 90 * direction
+#		$CollisionShape2D.rotation_degrees = -180 * direction
+		$Sprite.scale.y = -1
+	$CollisionShape2D.rotation_degrees = $Sprite.rotation_degrees
