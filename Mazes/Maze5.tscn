@@ -11,7 +11,7 @@
 [ext_resource path="res://Com.gd" type="Script" id=9]
 [ext_resource path="res://tilemap/occlusionTiles.tres" type="TileSet" id=10]
 
-[sub_resource type="Shader" id=22]
+[sub_resource type="Shader" id=29]
 code = "shader_type canvas_item;
 
 
@@ -22,7 +22,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=23]
-shader = SubResource( 22 )
+shader = SubResource( 29 )
 
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 3, 3 )
