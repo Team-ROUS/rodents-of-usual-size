@@ -86,7 +86,7 @@ stream = ExtResource( 17 )
 position = Vector2( 15, 360 )
 
 [node name="Sprite" parent="player" index="2"]
-frame = 3
+frame = 1
 
 [node name="AudioStreamPlayer2D" parent="player" index="12"]
 autoplay = false

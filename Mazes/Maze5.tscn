@@ -21,6 +21,9 @@ position = Vector2( -3, 0 )
 
 [node name="player" parent="." instance=ExtResource( 1 )]
 
+[node name="Sprite" parent="player" index="2"]
+frame = 2
+
 [node name="Control" parent="player/Area2D" index="0"]
 minutes = 2
 seconds = 30
