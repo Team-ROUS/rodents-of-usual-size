@@ -3,6 +3,7 @@ extends Control
 export (int) var minutes = 0
 export (int) var seconds = 0
 var dsecs = 0
+var count = 0
 
 func _ready():
 	pass # Replace with function body.
@@ -24,7 +25,15 @@ func _physics_process(delta):
 		$dsec.set_text(str(dsecs))
 	else:
 		$dsec.set_text("0" + str(dsecs))
+		
+	if minutes <= 0 and seconds <= 0 and dsecs <= 0and count == 0:
+		$failSound.play()
+		count += 1
+		$AudioStreamPlayer2D.stop()
+		
+		
 
 func _on_Timer_timeout():
-	dsecs -= 1
+	if dsecs >= 1:
+		dsecs -= 1
 
