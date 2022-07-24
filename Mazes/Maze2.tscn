@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tilemap/tilemap2.tres" type="TileSet" id=1]
 [ext_resource path="res://PipeBoltedL.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Art/Tiles - Pipe Bolted R.png" type="Texture" id=3]
 [ext_resource path="res://tilemap/occlusionTiles.tres" type="TileSet" id=4]
 [ext_resource path="res://player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Finish.tscn" type="PackedScene" id=6]
 [ext_resource path="res://white.png" type="Texture" id=8]
 [ext_resource path="res://audio/ROUS_MUSIC_TRACK_1.wav" type="AudioStream" id=12]
 
@@ -49,9 +50,12 @@ autoplay = true
 position = Vector2( 110, 700 )
 
 [node name="Sprite" parent="player" index="2"]
-frame = 1
+frame = 3
 
 [node name="Control" parent="player/Area2D" index="0"]
 seconds = 30
+
+[node name="Finish" parent="." instance=ExtResource( 6 )]
+position = Vector2( 707, 312 )
 
 [editable path="player"]
