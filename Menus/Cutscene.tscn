@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Art/Mouse Sprites/cutscene-bg.png" type="Texture" id=1]
+[ext_resource path="res://Art/Mouse Sprites/cutscene1.png" type="Texture" id=2]
+[ext_resource path="res://Art/Mouse Sprites/cutscene2.png" type="Texture" id=3]
+[ext_resource path="res://Art/Mouse Sprites/cutscene3.png" type="Texture" id=4]
+[ext_resource path="res://Art/Mouse Sprites/cutscene4.png" type="Texture" id=5]
+[ext_resource path="res://Cutscene.gd" type="Script" id=6]
+[ext_resource path="res://audio/ROUS_MUSIC_LEVEL_FAILIURE.wav" type="AudioStream" id=7]
+
+[node name="Cutscene" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Cutscene4" type="Sprite" parent="."]
+position = Vector2( 515, 301 )
+scale = Vector2( 12, 12 )
+texture = ExtResource( 5 )
+
+[node name="Cutscene3" type="Sprite" parent="."]
+position = Vector2( 515, 301 )
+scale = Vector2( 12, 12 )
+texture = ExtResource( 4 )
+
+[node name="Cutscene2" type="Sprite" parent="."]
+position = Vector2( 515, 301 )
+scale = Vector2( 12, 12 )
+texture = ExtResource( 3 )
+
+[node name="Cutscene1" type="Sprite" parent="."]
+position = Vector2( 515, 301 )
+scale = Vector2( 12, 12 )
+texture = ExtResource( 2 )
+
+[node name="Cutscene-bg" type="Sprite" parent="."]
+position = Vector2( 514.5, 296 )
+scale = Vector2( 21.8958, 13.0417 )
+z_index = -1
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -3.0
