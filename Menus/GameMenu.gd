@@ -1,18 +1,19 @@
 extends Control
 
+var is_paused = false setget set_is_paused
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _unhandled_input(event):
+	if event.is_action_pressed("pause"):
+		self.is_paused = !is_paused
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func set_is_paused(value):
+	is_paused = value
+	get_tree().paused = is_paused
+	visible = is_paused
 
 
 func _on_ResumeButton_pressed():
-	get_tree().change_scene("res://World.tscn")
+	get_tree().change_scene("res://Mazes/" + str(Global.prevScene) + ".tscn")
 
 
 func _on_QuitButton_pressed():
