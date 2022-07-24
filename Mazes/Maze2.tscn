@@ -47,3 +47,11 @@ autoplay = true
 
 [node name="player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 110, 700 )
+
+[node name="Sprite" parent="player" index="2"]
+frame = 1
+
+[node name="Control" parent="player/Area2D" index="0"]
+seconds = 30
+
+[editable path="player"]
