@@ -6,15 +6,22 @@ var PORT
 
 onready var com = $Com
 
-var maze_2_mapping_1 = [
+var maze_2_mapping_1 = pipe_bottom_adjustment([
 	[2, 0],
 	[111.2752, 702.925232],
-]
+])
 
-var maze_2_mapping_2 = [
+var maze_2_mapping_2 = pipe_bottom_adjustment([
 	[14, 8],
-	[707.144226, 318.925262],
-]
+	[707.144226, 318.925262], 
+])
+
+func pipe_bottom_adjustment(mapping):
+	# account for mouse sitting at the bottom of the pipe
+	return [
+		[mapping[0][0], mapping[0][1]],
+		[mapping[1][0], mapping[1][1] + 25],
+	]
 
 func get_params(mapping_1, mapping_2):
 	var dx_excel = mapping_2[0][0] - mapping_1[0][0]
