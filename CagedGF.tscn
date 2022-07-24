@@ -14,4 +14,5 @@ texture = ExtResource( 2 )
 position = Vector2( 0, 5 )
 z_index = -1
 frames = ExtResource( 1 )
+playing = true
 script = ExtResource( 3 )

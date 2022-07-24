@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://SuccessMenu.gd" type="Script" id=1]
+[ext_resource path="res://CagedGF.tscn" type="PackedScene" id=2]
 
 [node name="SuccessMenu" type="Control"]
 anchor_right = 1.0
@@ -20,7 +21,7 @@ margin_bottom = 64.0
 [node name="Label" type="Label" parent="VBoxContainer"]
 margin_right = 217.0
 margin_bottom = 14.0
-text = "YEAAAAAAAAAAAAAA YOU DID IT"
+text = "I must find her."
 
 [node name="Control" type="Label" parent="VBoxContainer"]
 margin_top = 18.0
@@ -47,6 +48,10 @@ margin_top = 118.0
 margin_right = 217.0
 margin_bottom = 138.0
 text = "Quit to Main Menu"
+
+[node name="Node2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 575, 211 )
+scale = Vector2( 3, 3 )
 
 [connection signal="pressed" from="VBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
