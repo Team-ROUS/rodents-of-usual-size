@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tilemap/tilemap2.tres" type="TileSet" id=1]
 [ext_resource path="res://PipeBoltedL.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://white.png" type="Texture" id=5]
 [ext_resource path="res://player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://audio/ROUS_MUSIC_TRACK_2_LOOP.wav" type="AudioStream" id=7]
+[ext_resource path="res://Finish.tscn" type="PackedScene" id=8]
 
 [node name="Maze3" type="Node2D"]
 
@@ -70,7 +71,7 @@ texture = ExtResource( 5 )
 position = Vector2( 20, 170 )
 
 [node name="Sprite" parent="player" index="2"]
-frame = 1
+frame = 0
 
 [node name="AudioStreamPlayer2D" parent="player" index="12"]
 stream = ExtResource( 7 )
@@ -78,9 +79,12 @@ autoplay = false
 
 [node name="Control" parent="player/Area2D" index="0"]
 minutes = 1
-seconds = 50
+seconds = 20
 
 [node name="AudioStreamPlayer2D" parent="player/Area2D/Control" index="5"]
 stream = ExtResource( 7 )
+
+[node name="Finish" parent="." instance=ExtResource( 8 )]
+position = Vector2( 600, 711 )
 
 [editable path="player"]
