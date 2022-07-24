@@ -12,26 +12,40 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -51.5
-margin_top = -23.5
-margin_right = 51.5
-margin_bottom = 23.5
+margin_left = -112.0
+margin_top = -74.0
+margin_right = 105.0
+margin_bottom = 64.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 217.0
+margin_bottom = 14.0
+text = "YEAAAAAAAAAAAAAA YOU DID IT"
+
+[node name="Control" type="Label" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 217.0
+margin_bottom = 66.0
+text = "
+
+"
 
 [node name="NextButton" type="Button" parent="VBoxContainer"]
-margin_right = 132.0
-margin_bottom = 20.0
+margin_top = 70.0
+margin_right = 217.0
+margin_bottom = 90.0
 text = "Next"
 
 [node name="RestartButton" type="Button" parent="VBoxContainer"]
-margin_top = 24.0
-margin_right = 132.0
-margin_bottom = 44.0
+margin_top = 94.0
+margin_right = 217.0
+margin_bottom = 114.0
 text = "Restart"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
-margin_top = 48.0
-margin_right = 132.0
-margin_bottom = 68.0
+margin_top = 118.0
+margin_right = 217.0
+margin_bottom = 138.0
 text = "Quit to Main Menu"
 
 [connection signal="pressed" from="VBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
