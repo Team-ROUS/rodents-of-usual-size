@@ -15,6 +15,9 @@ var maze_measurements = {
 		"1": pipe_bottom_adjustment([[2, 0],[96, 702]]),
 		"2": pipe_bottom_adjustment([[14, 8],[672, 318]])
 	},
+	"maze_3": {
+		"1": pipe_bottom_adjustment([[0, 11], [0, 172]]),
+		"2": pipe_bottom_adjustment([[12, 0], [582, 701]])
 	},
 	"maze_5": {
 		"1": pipe_bottom_adjustment([[0, 0], [6, 702]]),
