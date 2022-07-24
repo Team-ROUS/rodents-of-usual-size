@@ -62,12 +62,37 @@ func convert_y_from_godot(y, y_multiplier, y_constant):
 	return (y - y_constant) / y_multiplier
 
 
+func generate_route_progresses(map_idx):
+	var y_current = y_start[map_idx]
+	var x_current = x_start[map_idx]
+	var map = maps[map_idx]
+	var progresses = []
+	for i in len(map):
+		pass
+		progresses.append([i, [x_current, y_current]])
+		var dir = map[i]
+		if dir == 'u':
+			y_current += 1
+		if dir == 'd':
+			y_current -= 1
+		if dir == 'l':
+			x_current -= 1
+		if dir == 'r':
+			x_current += 1
+	return progresses
+
+
+
+
+# WARNING: this has to be the same as in Arduino repo
+var x_start = [0, 2, 0, 0, 0];
+var y_start = [6, 0, 12, 14, 0];
 var maps = [
-	"6,0,RRRRRRRRRRRUUURRRR",
-	"0,2,RRRRRUUUUURRRRRUUURRR",
-	"11,0,RRRRRRDDDLLLDDDDRRRRRRUUUUURRRDDDDDDDDD",
-	"14,0,RDDRRUURRRRRRDLDLULLDDDRRRRRURRDDDLLDLLULULLLDDRRDDLLLUUULDDDDDLUUUUULDDDDDDDRRRRRUURRDDRRRRRUUULLL",
-	"0,0,RUURDRRUUUULUUURRDRUULLLLLUUURRDRUUURDDDDRRDDDRDDDDRURDDRUURUUUURUUULLLDLDRRDLLLUUUUURRRRDRR",
+	"rrrrrrrrrrruuurrrr",
+	"rrrrruuuuurrrrruuurrr",
+	"rrrrrrdddlllddddrrrrrruuuuurrrddddddddd",
+	"rddrruurrrrrrdldlulldddrrrrrurrdddlldllululllddrrddllluuuldddddluuuuuldddddddrrrrruurrddrrrrruuulll",
+	"ruurdrruuuuluuurrdruullllluuurrdruuurddddrrdddrddddrurddruuruuuuruuullldldrrdllluuuuurrrrdrr",
 ]
 var player_progress = 0
 var last_change = OS.get_ticks_msec()
@@ -91,6 +116,8 @@ func plugin_installed():
 	return directory.file_exists("res://addons/GDSerCommDock/bin/libGDSercomm.dylib")
 
 func _ready():
+	print(generate_route_progresses(1))
+	
 	if plugin_installed():
 		PORT = SERCOMM.new()
 		PORT.open(
