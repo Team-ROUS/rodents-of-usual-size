@@ -96,7 +96,8 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, UP)
 	
 #	show the pause menu
-	if Input.is_action_just_pressed("esc"):
+	if Input.is_action_just_pressed("pause"):
+		Global.prevScene = get_tree().get_current_scene().get_name()
 		get_tree().change_scene("res://Menus/GameMenu.tscn");
 	
 	

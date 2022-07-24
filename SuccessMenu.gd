@@ -1,22 +1,14 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
 func _on_NextButton_pressed():
-	pass # Replace with function body.
+	var mazeNum = str(Global.prevScene).right(4);
+	var nextLevel = int(mazeNum)+1
+	get_tree().change_scene("res://Mazes/Maze" + str(nextLevel) +".tscn")
 
 
 func _on_RestartButton_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://Mazes/" + str(Global.prevScene) +".tscn")
 
 
 func _on_QuitButton_pressed():

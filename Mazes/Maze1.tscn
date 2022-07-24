@@ -86,7 +86,7 @@ texture = ExtResource( 12 )
 position = Vector2( 796, 211 )
 
 [node name="Finish" parent="." instance=ExtResource( 14 )]
-position = Vector2( 723, 217 )
+position = Vector2( 710, 216 )
 
 [node name="player2" type="KinematicBody2D" parent="." groups=["player"]]
 position = Vector2( 30, 367 )
