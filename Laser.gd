@@ -174,5 +174,5 @@ func laser_update():
 		var closest_progress = find_closest_progress(map_idx, x, y)
 		var dist = get_progress_dist(closest_progress)
 		print("pos: (%d, %d) (%d, %d) %f" % [x, y, pos[0], pos[1], dist])
-		laser_set_map(map_idx, closest_progress[0] if dist < 1 else 255)
+		laser_set_map(map_idx, closest_progress[0] if dist < 1.2 else 255)
 		last_change = OS.get_ticks_msec()
