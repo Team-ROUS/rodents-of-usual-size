@@ -7,9 +7,21 @@ var PORT
 onready var com = $Com
 
 var maze_measurements = {
+	"maze_1": {
+		"1": pipe_bottom_adjustment([[0, 6], [0, 367]]),
+		"2": pipe_bottom_adjustment([[14, 9], [672, 223]])
+	},
 	"maze_2": {
-		"1": pipe_bottom_adjustment([[2, 0],[110, 700]]),
-		"2": pipe_bottom_adjustment([[14, 8],[708, 317]])
+		"1": pipe_bottom_adjustment([[2, 0],[96, 702]]),
+		"2": pipe_bottom_adjustment([[14, 8],[672, 318]])
+	},
+	"maze_3": {
+		"1": pipe_bottom_adjustment([[0, 11], [0, 172]]),
+		"2": pipe_bottom_adjustment([[12, 0], [582, 701]])
+	},
+	"maze_4": {
+		"1": pipe_bottom_adjustment([[14, 0], [0, 28]]),
+		"2": pipe_bottom_adjustment([[9, 4], [483, 508]])
 	},
 	"maze_5": {
 		"1": pipe_bottom_adjustment([[0, 0], [6, 702]]),
@@ -61,7 +73,6 @@ func convert_x_from_godot(x, x_multiplier, x_constant):
 func convert_y_from_godot(y, y_multiplier, y_constant):
 	return (y - y_constant) / y_multiplier
 
-
 func generate_route_progresses(map_idx, x, y):
 	var y_current = y_start[map_idx]
 	var x_current = x_start[map_idx]
@@ -103,7 +114,6 @@ func dist_comparison(a, b):
 	else:
 		return false
 
-
 # WARNING: this has to be the same as in Arduino repo
 var x_start = [0, 2, 0, 0, 0];
 var y_start = [6, 0, 12, 14, 0];
@@ -116,7 +126,6 @@ var maps = [
 ]
 
 var last_change = OS.get_ticks_msec()
-
 func get_map_idx():
 	var name = get_tree().get_current_scene().get_name()
 	if name == "Maze1":
@@ -136,9 +145,6 @@ func plugin_installed():
 	return directory.file_exists("res://addons/GDSerCommDock/bin/libGDSercomm.dylib")
 
 func _ready():
-	
-#	print(generate_route_progresses(1,0,0))
-	
 	if plugin_installed():
 		PORT = SERCOMM.new()
 		PORT.open(
@@ -153,25 +159,20 @@ func _ready():
 
 func laser_set_map(map_idx, player_progress):
 	if plugin_installed():
-		var tmp = "%d,%d\n" % [map_idx, player_progress]
-		PORT.write(tmp)
+		var line = "%d,%d\n" % [map_idx, player_progress]
+		PORT.write(line)
 		PORT.flush()
 
 func laser_update():
-	pass
-#	if OS.get_ticks_msec() - last_change > 150:
-#		var map_idx = get_map_idx()
-#
-#		last_change = OS.get_ticks_msec()
-#		var pos = get_node("/root/Maze%d/player" % [map_idx+1]).get_position()
-#		var measurements = maze_measurements["maze_%d" % [map_idx+1]]
-#		var params = get_params(measurements["1"], measurements["2"])
-#		var x = convert_x_from_godot(pos[0], params["x_multiplier"], params["x_constant"])
-#		var y = convert_y_from_godot(pos[1], params["y_multiplier"], params["y_constant"])
-#
-#		var closest_progress = find_closest_progress(map_idx, x, y)
-#		var dist = get_progress_dist(closest_progress)
-#		# print(dist,closest_progress)
-#		print("pos: (%d, %d) (%d, %d) %f" % [x, y, pos[0], pos[1], dist])
-#
-#		laser_set_map(map_idx, closest_progress[0] if dist < 1 else 255)
+	if OS.get_ticks_msec() - last_change > 150:
+		var map_idx = get_map_idx()
+		var pos = get_node("/root/Maze%d/player" % [map_idx+1]).get_position()
+		var measurements = maze_measurements["maze_%d" % [map_idx+1]]
+		var params = get_params(measurements["1"], measurements["2"])
+		var x = convert_x_from_godot(pos[0], params["x_multiplier"], params["x_constant"])
+		var y = convert_y_from_godot(pos[1], params["y_multiplier"], params["y_constant"])
+		var closest_progress = find_closest_progress(map_idx, x, y)
+		var dist = get_progress_dist(closest_progress)
+		print("pos: (%d, %d) (%d, %d) %f" % [x, y, pos[0], pos[1], dist])
+		laser_set_map(map_idx, closest_progress[0] if dist < 1 else 255)
+		last_change = OS.get_ticks_msec()
