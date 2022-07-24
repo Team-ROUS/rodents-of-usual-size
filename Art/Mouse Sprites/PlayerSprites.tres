@@ -15,13 +15,13 @@ animations = [ {
 "name": "corner-inner",
 "speed": 5.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "corner-outer",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "moving",
 "speed": 8.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "corner-outer",
+"speed": 5.0
 } ]
