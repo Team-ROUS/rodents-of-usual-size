@@ -6,6 +6,55 @@ var PORT
 
 onready var com = $Com
 
+var maze_2_mapping_1 = [
+	[2, 0],
+	[111.2752, 702.925232],
+]
+
+var maze_2_mapping_2 = [
+	[14, 8],
+	[707.144226, 318.925262],
+]
+
+func get_params(mapping_1, mapping_2):
+	var dx_excel = mapping_2[0][0] - mapping_1[0][0]
+	var dx_godot = mapping_2[1][0] - mapping_1[1][0]
+
+	var dy_excel = mapping_2[0][1] - mapping_1[0][1]
+	var dy_godot = mapping_2[1][1] - mapping_1[1][1]
+
+	var godot_x_multiplier = dx_godot/dx_excel
+	var godot_y_multiplier = dy_godot/dy_excel
+
+	var godot_x1_simulated = godot_x_multiplier * mapping_1[0][0]
+	var godot_y1_simulated = godot_y_multiplier * mapping_1[0][1]
+
+	var godot_x1_diversion = godot_x1_simulated - mapping_1[1][0]
+	var godot_y1_diversion = godot_y1_simulated - mapping_1[1][1]
+
+	return {
+		"x_multiplier": godot_x_multiplier,
+		"y_multiplier": godot_y_multiplier,
+		"x_constant": -godot_x1_diversion,
+		"y_constant": -godot_y1_diversion
+	}
+
+
+var params = get_params(maze_2_mapping_1, maze_2_mapping_2)
+
+func convert_x_from_excel(x, x_multiplier, x_constant):
+	return x_multiplier * x + x_constant
+
+func convert_y_from_excel(y, y_multiplier, y_constant):
+	return y_multiplier * y + y_constant
+
+func convert_x_from_godot(x, x_multiplier, x_constant):
+	return (x - x_constant) / x_multiplier
+
+func convert_y_from_godot(y, y_multiplier, y_constant):
+	return (y - y_constant) / y_multiplier
+
+
 var maps = [
 	"6,0,RRRRRRRRRRRUUURRRR",
 	"0,2,RRRRRUUUUURRRRRUUURRR",
@@ -62,5 +111,6 @@ func laser_update():
 		laser_set_map(map_idx)
 		last_change = OS.get_ticks_msec()
 		var pos = get_node("/root/Maze%d/player" % [map_idx+1]).get_position()
-		print("pos:")
-		print(pos)
+		var x = convert_x_from_godot(pos[0], params["x_multiplier"], params["x_constant"])
+		var y = convert_y_from_godot(pos[1], params["y_multiplier"], params["y_constant"])
+		print("pos: %d, %d" % [x, y])
