@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://tilemap/tilemap2.tres" type="TileSet" id=1]
 [ext_resource path="res://PipeBoltedL.tscn" type="PackedScene" id=2]
 [ext_resource path="res://tilemap/occlusionTiles.tres" type="TileSet" id=3]
+[ext_resource path="res://audio/ROUS_MUSIC_TRACK_2.wav" type="AudioStream" id=4]
 
 [node name="Maze3" type="Node2D"]
 
@@ -43,3 +44,7 @@ tile_data = PoolIntArray( 65539, 6, 0, 131370, 4, 0, 131441, 4, 0, 196904, 4, 0,
 [node name="PipeBoltedL42" parent="." instance=ExtResource( 2 )]
 position = Vector2( 191, 456 )
 rotation = -6.28319
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
