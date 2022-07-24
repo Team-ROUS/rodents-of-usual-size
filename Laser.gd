@@ -6,15 +6,18 @@ var PORT
 
 onready var com = $Com
 
-var maze_2_mapping_1 = pipe_bottom_adjustment([
-	[2, 0],
-	[111.2752, 702.925232],
-])
+var maze_measurements = {
+	"maze_2": {
+		"1": pipe_bottom_adjustment([[2, 0],[110, 700]]),
+		"2": pipe_bottom_adjustment([[14, 8],[708, 317]])
+	},
+	"maze_5": {
+		"1": pipe_bottom_adjustment([[0, 0], [24, 702]]),
+		"2": pipe_bottom_adjustment([[14, 12], [695, 126]])
+	}
+}
+var params
 
-var maze_2_mapping_2 = pipe_bottom_adjustment([
-	[14, 8],
-	[707.144226, 318.925262], 
-])
 
 func pipe_bottom_adjustment(mapping):
 	# account for mouse sitting at the bottom of the pipe
@@ -45,9 +48,6 @@ func get_params(mapping_1, mapping_2):
 		"x_constant": -godot_x1_diversion,
 		"y_constant": -godot_y1_diversion
 	}
-
-
-var params = get_params(maze_2_mapping_1, maze_2_mapping_2)
 
 func convert_x_from_excel(x, x_multiplier, x_constant):
 	return x_multiplier * x + x_constant
@@ -136,7 +136,8 @@ func plugin_installed():
 	return directory.file_exists("res://addons/GDSerCommDock/bin/libGDSercomm.dylib")
 
 func _ready():
-	print(generate_route_progresses(1,0,0))
+	
+#	print(generate_route_progresses(1,0,0))
 	
 	if plugin_installed():
 		PORT = SERCOMM.new()
@@ -162,10 +163,13 @@ func laser_update():
 		
 		last_change = OS.get_ticks_msec()
 		var pos = get_node("/root/Maze%d/player" % [map_idx+1]).get_position()
+		var measurements = maze_measurements["maze_%d" % [map_idx+1]]
+		var params = get_params(measurements["1"], measurements["2"])
 		var x = convert_x_from_godot(pos[0], params["x_multiplier"], params["x_constant"])
 		var y = convert_y_from_godot(pos[1], params["y_multiplier"], params["y_constant"])
-#		print("pos: %d, %d" % [x, y])
+		print("pos: (%d, %d) (%d, %d)" % [x, y, pos[0], pos[1]])
+
 		var closest_progress = find_closest_progress(map_idx, x, y)
 		var dist = get_progress_dist(closest_progress)
-		print(dist,closest_progress)
+		# print(dist,closest_progress)
 		laser_set_map(map_idx, closest_progress[0] if dist < 1.2 else 255)
