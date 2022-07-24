@@ -62,14 +62,18 @@ func convert_y_from_godot(y, y_multiplier, y_constant):
 	return (y - y_constant) / y_multiplier
 
 
-func generate_route_progresses(map_idx):
+func generate_route_progresses(map_idx, x, y):
 	var y_current = y_start[map_idx]
 	var x_current = x_start[map_idx]
 	var map = maps[map_idx]
 	var progresses = []
 	for i in len(map):
 		pass
-		progresses.append([i, [x_current, y_current]])
+		progresses.append([
+			i, 
+			[x_current, y_current],
+			[x, y]
+		])
 		var dir = map[i]
 		if dir == 'u':
 			y_current += 1
@@ -81,7 +85,24 @@ func generate_route_progresses(map_idx):
 			x_current += 1
 	return progresses
 
-
+func find_closest_progress(map_idx, x, y):
+	var progresses = generate_route_progresses(map_idx, x, y)
+	progresses.sort_custom(self, "dist_comparison")
+	return progresses[0]
+	
+func dist_comparison(a, b):
+	var dx_a = a[1][0] - a[2][0]
+	var dy_a = a[1][1] - a[2][1]
+	var dist_a = sqrt(pow(dx_a, 2) + pow(dy_a, 2))
+	
+	var dx_b = b[1][0] - b[2][0]
+	var dy_b = b[1][1] - b[2][1]
+	var dist_b = sqrt(pow(dx_b, 2) + pow(dy_b, 2))
+	
+	if dist_a < dist_b:
+		return true
+	else:
+		return false
 
 
 # WARNING: this has to be the same as in Arduino repo
@@ -94,7 +115,7 @@ var maps = [
 	"rddrruurrrrrrdldlulldddrrrrrurrdddlldllululllddrrddllluuuldddddluuuuuldddddddrrrrruurrddrrrrruuulll",
 	"ruurdrruuuuluuurrdruullllluuurrdruuurddddrrdddrddddrurddruuruuuuruuullldldrrdllluuuuurrrrdrr",
 ]
-var player_progress = 0
+#var player_progress = 0
 var last_change = OS.get_ticks_msec()
 
 func get_map_idx():
@@ -116,7 +137,7 @@ func plugin_installed():
 	return directory.file_exists("res://addons/GDSerCommDock/bin/libGDSercomm.dylib")
 
 func _ready():
-	print(generate_route_progresses(1))
+	print(generate_route_progresses(1,0,0))
 	
 	if plugin_installed():
 		PORT = SERCOMM.new()
@@ -130,7 +151,7 @@ func _ready():
 		PORT.flush()
 		laser_update()
 
-func laser_set_map(map_idx):
+func laser_set_map(map_idx, player_progress):
 	if plugin_installed():
 		var tmp = "%d,%d\n" % [map_idx, player_progress]
 		PORT.write(tmp)
@@ -139,12 +160,15 @@ func laser_set_map(map_idx):
 func laser_update():
 	if OS.get_ticks_msec() - last_change > 150:
 		var map_idx = get_map_idx()
-		player_progress += 1
-		if player_progress >= len(maps[map_idx]):
-			player_progress = 0
-		laser_set_map(map_idx)
+#		player_progress += 1
+#		if player_progress >= len(maps[map_idx]):
+#			player_progress = 0
+		
 		last_change = OS.get_ticks_msec()
 		var pos = get_node("/root/Maze%d/player" % [map_idx+1]).get_position()
 		var x = convert_x_from_godot(pos[0], params["x_multiplier"], params["x_constant"])
 		var y = convert_y_from_godot(pos[1], params["y_multiplier"], params["y_constant"])
-		print("pos: %d, %d" % [x, y])
+#		print("pos: %d, %d" % [x, y])
+		var closest_progress = find_closest_progress(map_idx, x, y)
+		print(closest_progress)
+		laser_set_map(map_idx, closest_progress[0])
