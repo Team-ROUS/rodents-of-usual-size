@@ -79,7 +79,7 @@ light_mask = 2
 scale = Vector2( 0.5, 0.5 )
 frames = ExtResource( 8 )
 animation = "moving"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Shadow mask" type="Light2D" parent="."]
