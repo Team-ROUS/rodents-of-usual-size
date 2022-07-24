@@ -147,7 +147,7 @@ margin_top = -690.0
 margin_right = 23.0
 margin_bottom = -650.0
 script = ExtResource( 9 )
-seconds = 5
+seconds = 70
 
 [node name="dsec" type="RichTextLabel" parent="Area2D/Control"]
 light_mask = 2

@@ -85,14 +85,11 @@ stream = ExtResource( 17 )
 [node name="player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 15, 360 )
 
-[node name="Sprite" parent="player" index="2"]
-frame = 3
-
 [node name="AudioStreamPlayer2D" parent="player" index="12"]
 autoplay = false
 
 [node name="Control" parent="player/Area2D" index="0"]
-seconds = 3
+seconds = 30
 
 [node name="AudioStreamPlayer2D" parent="player/Area2D/Control" index="5"]
 stream = ExtResource( 4 )

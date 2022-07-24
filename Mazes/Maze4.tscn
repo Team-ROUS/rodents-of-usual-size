@@ -64,7 +64,7 @@ autoplay = false
 
 [node name="Control" parent="player/Area2D" index="0"]
 minutes = 1
-seconds = 15
+seconds = 60
 
 [node name="AudioStreamPlayer2D" parent="player/Area2D/Control" index="5"]
 stream = ExtResource( 4 )
