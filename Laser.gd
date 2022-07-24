@@ -20,7 +20,7 @@ func pipe_bottom_adjustment(mapping):
 	# account for mouse sitting at the bottom of the pipe
 	return [
 		[mapping[0][0], mapping[0][1]],
-		[mapping[1][0], mapping[1][1] + 25],
+		[mapping[1][0], mapping[1][1] + 0],
 	]
 
 func get_params(mapping_1, mapping_2):
@@ -168,4 +168,4 @@ func laser_update():
 		var closest_progress = find_closest_progress(map_idx, x, y)
 		var dist = get_progress_dist(closest_progress)
 		print(dist,closest_progress)
-		laser_set_map(map_idx, closest_progress[0] if dist < 1 else 255)
+		laser_set_map(map_idx, closest_progress[0] if dist < 1.2 else 255)
