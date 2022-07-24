@@ -90,15 +90,14 @@ func find_closest_progress(map_idx, x, y):
 	progresses.sort_custom(self, "dist_comparison")
 	return progresses[0]
 	
-func dist_comparison(a, b):
+func get_progress_dist(a):
 	var dx_a = a[1][0] - a[2][0]
 	var dy_a = a[1][1] - a[2][1]
-	var dist_a = sqrt(pow(dx_a, 2) + pow(dy_a, 2))
+	return sqrt(pow(dx_a, 2) + pow(dy_a, 2)) 
 	
-	var dx_b = b[1][0] - b[2][0]
-	var dy_b = b[1][1] - b[2][1]
-	var dist_b = sqrt(pow(dx_b, 2) + pow(dy_b, 2))
-	
+func dist_comparison(a, b):
+	var dist_a = get_progress_dist(a)
+	var dist_b = get_progress_dist(b)
 	if dist_a < dist_b:
 		return true
 	else:
@@ -115,7 +114,7 @@ var maps = [
 	"rddrruurrrrrrdldlulldddrrrrrurrdddlldllululllddrrddllluuuldddddluuuuuldddddddrrrrruurrddrrrrruuulll",
 	"ruurdrruuuuluuurrdruullllluuurrdruuurddddrrdddrddddrurddruuruuuuruuullldldrrdllluuuuurrrrdrr",
 ]
-#var player_progress = 0
+
 var last_change = OS.get_ticks_msec()
 
 func get_map_idx():
@@ -160,9 +159,6 @@ func laser_set_map(map_idx, player_progress):
 func laser_update():
 	if OS.get_ticks_msec() - last_change > 150:
 		var map_idx = get_map_idx()
-#		player_progress += 1
-#		if player_progress >= len(maps[map_idx]):
-#			player_progress = 0
 		
 		last_change = OS.get_ticks_msec()
 		var pos = get_node("/root/Maze%d/player" % [map_idx+1]).get_position()
@@ -170,5 +166,6 @@ func laser_update():
 		var y = convert_y_from_godot(pos[1], params["y_multiplier"], params["y_constant"])
 #		print("pos: %d, %d" % [x, y])
 		var closest_progress = find_closest_progress(map_idx, x, y)
-		print(closest_progress)
-		laser_set_map(map_idx, closest_progress[0])
+		var dist = get_progress_dist(closest_progress)
+		print(dist,closest_progress)
+		laser_set_map(map_idx, closest_progress[0] if dist < 1 else 255)
