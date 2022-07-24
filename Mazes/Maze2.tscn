@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tilemap/tilemap2.tres" type="TileSet" id=1]
 [ext_resource path="res://PipeBoltedL.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Art/Tiles - Pipe Bolted R.png" type="Texture" id=3]
 [ext_resource path="res://tilemap/occlusionTiles.tres" type="TileSet" id=4]
 [ext_resource path="res://player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://audio/ROUS_MUSIC_TRACK_1_LOOP.wav" type="AudioStream" id=6]
 [ext_resource path="res://white.png" type="Texture" id=8]
 [ext_resource path="res://audio/ROUS_MUSIC_TRACK_1.wav" type="AudioStream" id=12]
 
@@ -43,15 +44,20 @@ texture = ExtResource( 8 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 12 )
-autoplay = true
 
 [node name="player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 110, 700 )
 
 [node name="Sprite" parent="player" index="2"]
-frame = 1
+frame = 2
+
+[node name="AudioStreamPlayer2D" parent="player" index="12"]
+autoplay = false
 
 [node name="Control" parent="player/Area2D" index="0"]
-seconds = 30
+seconds = 3
+
+[node name="AudioStreamPlayer2D" parent="player/Area2D/Control" index="5"]
+stream = ExtResource( 6 )
 
 [editable path="player"]
