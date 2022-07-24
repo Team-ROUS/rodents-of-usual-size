@@ -53,13 +53,27 @@ function get_converters(mapping_1, mapping_6) {
     function formula_translate_y_from_excel(y) {
         return godot_y_multiplier * y - godot_y1_diversion
     }
+    function formula_translate_x_from_godot(x) {
+        return (x + godot_x1_diversion) / godot_x_multiplier
+    }
+    function formula_translate_y_from_godot(y) {
+        return (y + godot_y1_diversion) / godot_y_multiplier
+    }
     return {
         formula_translate_x_from_excel,
-        formula_translate_y_from_excel
+        formula_translate_y_from_excel,
+        formula_translate_x_from_godot,
+        formula_translate_y_from_godot
     }
 }
 
 const converters = get_converters(mapping_1, mapping_6)
 console.log(mapping_1[0][0], converters.formula_translate_x_from_excel(mapping_1[0][0]), mapping_1[1][0])
 console.log(mapping_1[0][1], converters.formula_translate_y_from_excel(mapping_1[0][1]), mapping_1[1][1])
+
+console.log(mapping_1[1][0], converters.formula_translate_x_from_godot(mapping_1[1][0]), mapping_1[0][0])
+console.log(mapping_1[1][1], converters.formula_translate_y_from_godot(mapping_1[1][1]), mapping_1[0][1])
+
+console.log(mapping_6[1][0], converters.formula_translate_x_from_godot(mapping_6[1][0]), mapping_6[0][0])
+console.log(mapping_6[1][1], converters.formula_translate_y_from_godot(mapping_6[1][1]), mapping_6[0][1])
 
