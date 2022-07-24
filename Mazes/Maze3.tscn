@@ -70,7 +70,7 @@ texture = ExtResource( 5 )
 position = Vector2( 20, 170 )
 
 [node name="Sprite" parent="player" index="2"]
-frame = 2
+frame = 1
 
 [node name="AudioStreamPlayer2D" parent="player" index="12"]
 stream = ExtResource( 7 )
