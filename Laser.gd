@@ -12,8 +12,8 @@ var maze_measurements = {
 		"2": pipe_bottom_adjustment([[14, 8],[708, 317]])
 	},
 	"maze_5": {
-		"1": pipe_bottom_adjustment([[0, 0], [24, 702]]),
-		"2": pipe_bottom_adjustment([[14, 12], [695, 126]])
+		"1": pipe_bottom_adjustment([[0, 0], [6+25, 702]]),
+		"2": pipe_bottom_adjustment([[14, 12], [677+25, 126]])
 	}
 }
 var params
@@ -167,9 +167,10 @@ func laser_update():
 		var params = get_params(measurements["1"], measurements["2"])
 		var x = convert_x_from_godot(pos[0], params["x_multiplier"], params["x_constant"])
 		var y = convert_y_from_godot(pos[1], params["y_multiplier"], params["y_constant"])
-		print("pos: (%d, %d) (%d, %d)" % [x, y, pos[0], pos[1]])
 
 		var closest_progress = find_closest_progress(map_idx, x, y)
 		var dist = get_progress_dist(closest_progress)
 		# print(dist,closest_progress)
-		laser_set_map(map_idx, closest_progress[0] if dist < 1.2 else 255)
+		print("pos: (%d, %d) (%d, %d) %f" % [x, y, pos[0], pos[1], dist])
+		
+		laser_set_map(map_idx, closest_progress[0] if dist < 1 else 255)
