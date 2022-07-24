@@ -12,8 +12,8 @@ var maze_measurements = {
 		"2": pipe_bottom_adjustment([[14, 8],[708, 317]])
 	},
 	"maze_5": {
-		"1": pipe_bottom_adjustment([[0, 0], [6+25, 702]]),
-		"2": pipe_bottom_adjustment([[14, 12], [677+25, 126]])
+		"1": pipe_bottom_adjustment([[0, 0], [6, 702]]),
+		"2": pipe_bottom_adjustment([[14, 12], [677, 126]])
 	}
 }
 var params
@@ -23,7 +23,7 @@ func pipe_bottom_adjustment(mapping):
 	# account for mouse sitting at the bottom of the pipe
 	return [
 		[mapping[0][0], mapping[0][1]],
-		[mapping[1][0], mapping[1][1] + 0],
+		[mapping[1][0]+25, mapping[1][1]],
 	]
 
 func get_params(mapping_1, mapping_2):
