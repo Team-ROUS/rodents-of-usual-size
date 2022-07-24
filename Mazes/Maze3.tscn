@@ -62,7 +62,6 @@ rotation = -6.28319
 stream = ExtResource( 4 )
 
 [node name="Background" type="Sprite" parent="."]
-visible = false
 position = Vector2( 932, -1333 )
 scale = Vector2( 1000, 1000 )
 z_index = 3
@@ -71,25 +70,15 @@ texture = ExtResource( 5 )
 [node name="player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 20, 170 )
 
-[node name="Node2D" parent="player" index="0"]
-visible = false
-
 [node name="Sprite" parent="player" index="2"]
-frame = 0
-
-[node name="Shadow mask" parent="player" index="3"]
-visible = false
-
-[node name="Camera2D" parent="player" index="11"]
-current = false
+frame = 3
 
 [node name="AudioStreamPlayer2D" parent="player" index="12"]
 stream = ExtResource( 7 )
 autoplay = false
 
 [node name="Control" parent="player/Area2D" index="0"]
-minutes = 1
-seconds = 20
+seconds = 50
 
 [node name="AudioStreamPlayer2D" parent="player/Area2D/Control" index="5"]
 stream = ExtResource( 7 )
@@ -101,5 +90,9 @@ position = Vector2( 600, 711 )
 light_mask = 2
 position = Vector2( 601, 726 )
 rotation = 4.71239
+
+[node name="PipeBoltedL44" parent="." instance=ExtResource( 2 )]
+light_mask = 2
+position = Vector2( -6, 169 )
 
 [editable path="player"]

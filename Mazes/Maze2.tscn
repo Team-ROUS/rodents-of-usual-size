@@ -61,4 +61,8 @@ stream = ExtResource( 7 )
 [node name="Finish" parent="." instance=ExtResource( 6 )]
 position = Vector2( 707, 312 )
 
+[node name="PipeBoltedL38" parent="." instance=ExtResource( 2 )]
+light_mask = 2
+position = Vector2( 91, 698 )
+
 [editable path="player"]
